@@ -21,7 +21,7 @@ This project simulates how a Program Manager would structure a **partner onboard
 - SQL:** Queries to aggregate and clean retail sales data
 - Python/Pandas:** For preprocessing raw data
 - Data Visualization:** Excel dashboard with KPI chart
-- 
+  
 ### 📊 Dataset
 - Source: [Kaggle – Retail/Grocery Sales Dataset](https://www.kaggle.com/datasets/rohitsahoo/sales-forecasting)  
 - Rows: 9,800+ transactions  
