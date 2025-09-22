@@ -88,7 +88,8 @@ Click any chart to view full size.
 ### 3. Top 10 Sub-Categories by Sales
 ![Top Sub-Categories](https://raw.githubusercontent.com/khushbookatyayan/Projects-Dashboards-Reporting/main/Top10%20Subcategory%20By%20Sales.png)
 👉 Full SQL scripts available here:  
-📂 [`sql/queries.sql`](./sql/queries.sql)
+📂 [sql/queries.sql](./sql/queries.sql)
+
 
 
 
