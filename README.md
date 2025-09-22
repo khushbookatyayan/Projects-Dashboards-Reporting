@@ -87,36 +87,8 @@ Click any chart to view full size.
 
 ### 3. Top 10 Sub-Categories by Sales
 ![Top Sub-Categories](https://raw.githubusercontent.com/khushbookatyayan/Projects-Dashboards-Reporting/main/Top10%20Subcategory%20By%20Sales.png)
-## 🛠️ SQL Analysis Queries
-
-Below are some of the SQL queries I used to generate insights from the retail dataset.  
-These can be run on the normalized sales data (`raw_sales.csv`).
-
-### 1. Total Sales by Region
-```sql
-SELECT Region, SUM(Sales) AS Total_Sales
-FROM raw_sales
-GROUP BY Region
-ORDER BY Total_Sales DESC;
-
-### 2. Top 10 Sub-Categories by Sales
-SELECT Category, Sub_Category, SUM(Sales) AS Total_Sales
-FROM raw_sales
-GROUP BY Category, Sub_Category
-ORDER BY Total_Sales DESC
-LIMIT 10;
-
-### 3. Monthly Sales Trend
-SELECT DATE_TRUNC('month', Order_Date) AS Month, SUM(Sales) AS Monthly_Sales
-FROM raw_sales
-GROUP BY DATE_TRUNC('month', Order_Date)
-ORDER BY Month;
-
-### 4. Sales by Customer Segment
-SELECT Segment, SUM(Sales) AS Total_Sales
-FROM raw_sales
-GROUP BY Segment
-ORDER BY Total_Sales DESC;
+👉 Full SQL scripts available here:  
+📂 [`sql/queries.sql`](./sql/queries.sql)
 
 
 
