@@ -21,7 +21,7 @@ This project simulates how a Program Manager would structure a **partner onboard
 - SQL:** Queries to aggregate and clean retail sales data
 - Python/Pandas:** For preprocessing raw data
 - Data Visualization:** Excel dashboard with KPI charts
-- SQL Queries: -- 1) Top categories by total sales
+### - SQL Queries: -- 1) Top categories by total sales
 SELECT
   Category,
   ROUND(SUM(Sales), 2) AS total_sales
