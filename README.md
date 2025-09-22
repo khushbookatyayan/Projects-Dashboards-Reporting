@@ -121,8 +121,7 @@ FROM raw_sales
 GROUP BY Segment
 ORDER BY Total_Sales DESC;
 
-👉 Full SQL scripts available here:
-📂 queries.sql
+
 
 
 
