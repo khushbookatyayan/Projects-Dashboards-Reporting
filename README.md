@@ -22,15 +22,15 @@ This project simulates how a Program Manager would structure a **partner onboard
 - Python/Pandas:** For preprocessing raw data
 - Data Visualization:** Excel dashboard with KPI charts
 ### - SQL Queries: -- 1) Top categories by total sales
-SELECT
+### SELECT
   Category,
   ROUND(SUM(Sales), 2) AS total_sales
 FROM retail_sales
 GROUP BY Category
 ORDER BY total_sales DESC;
 
--- 2) Top 10 sub-categories by total sales
-SELECT
+###-- 2) Top 10 sub-categories by total sales
+###SELECT
   Sub_Category,
   ROUND(SUM(Sales), 2) AS total_sales
 FROM (
