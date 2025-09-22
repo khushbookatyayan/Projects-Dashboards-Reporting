@@ -19,8 +19,85 @@ This project simulates how a Program Manager would structure a **partner onboard
 ### 🛠 Tools & Skills
 - Excel (Advanced):** Pivot tables, charts, slicers, conditional formatting
 - SQL:** Queries to aggregate and clean retail sales data
-- Python/Pandas (optional):** For preprocessing raw data
+- Python/Pandas:** For preprocessing raw data
 - Data Visualization:** Excel dashboard with KPI charts
+- SQL Queries: -- 1) Top categories by total sales
+SELECT
+  Category,
+  ROUND(SUM(Sales), 2) AS total_sales
+FROM retail_sales
+GROUP BY Category
+ORDER BY total_sales DESC;
+
+-- 2) Top 10 sub-categories by total sales
+SELECT
+  Sub_Category,
+  ROUND(SUM(Sales), 2) AS total_sales
+FROM (
+  SELECT REPLACE([Sub-Category], '-', '_') AS Sub_Category, Sales
+  FROM retail_sales
+)
+GROUP BY Sub_Category
+ORDER BY total_sales DESC
+LIMIT 10;
+
+-- 3) Sales by region (share of total)
+WITH region_totals AS (
+  SELECT Region, SUM(Sales) AS region_sales
+  FROM retail_sales
+  GROUP BY Region
+),
+grand AS (
+  SELECT SUM(Sales) AS total_sales FROM retail_sales
+)
+SELECT
+  r.Region,
+  ROUND(r.region_sales, 2) AS region_sales,
+  ROUND(100.0 * r.region_sales / g.total_sales, 1) AS pct_of_total
+FROM region_totals r CROSS JOIN grand g
+ORDER BY region_sales DESC;
+
+-- 4) Monthly sales trend
+-- Works in SQLite if dates are normalized to YYYY-MM-DD
+SELECT
+  STRFTIME('%Y-%m', DATE([Order Date])) AS month,
+  ROUND(SUM(Sales), 2) AS total_sales
+FROM retail_sales
+GROUP BY month
+ORDER BY month;
+
+-- 5) Sales by customer segment
+SELECT
+  Segment,
+  ROUND(SUM(Sales), 2) AS total_sales
+FROM retail_sales
+GROUP BY Segment
+ORDER BY total_sales DESC;
+
+-- 6) Top 10 products by revenue
+SELECT
+  [Product Name] AS product_name,
+  ROUND(SUM(Sales), 2) AS total_sales
+FROM retail_sales
+GROUP BY [Product Name]
+ORDER BY total_sales DESC
+LIMIT 10;
+
+-- 7) Category x Region matrix
+SELECT
+  Category,
+  Region,
+  ROUND(SUM(Sales), 2) AS total_sales
+FROM retail_sales
+GROUP BY Category, Region
+ORDER BY Category, total_sales DESC;
+
+-- 8) (Optional) Basic price-demand proxy if you have Quantity column (not in this CSV)
+-- SELECT Product_ID, AVG(Price) AS avg_price, SUM(Quantity) AS total_units
+-- FROM retail_sales
+-- GROUP BY Product_ID
+-- ORDER BY total_units DESC;
+
 
 
 ### 📊 Dataset
