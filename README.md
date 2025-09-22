@@ -102,7 +102,7 @@ FROM raw_sales
 GROUP BY Region
 ORDER BY Total_Sales DESC;
 
-##2. Top 10 Sub-Categories by Sales
+###  2. Top 10 Sub-Categories by Sales
 SELECT Category, Sub_Category, SUM(Sales) AS Total_Sales
 FROM raw_sales
 GROUP BY Category, Sub_Category
